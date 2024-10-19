@@ -3,7 +3,7 @@ import React from 'react'
 const Mall = () => {
 	return(
 		<div>
-			mall
+			mall,改
 		</div>
 	)
 }
