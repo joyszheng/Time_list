@@ -5,9 +5,10 @@ import {
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
-} from '@ant-design/icons'
-import { Button, Layout, Menu, theme } from 'antd'
-import CommonAside from '../components/commonAside'
+} from '@ant-design/icons';
+import { Button, Layout, Menu, theme } from 'antd';
+import CommonAside from '../components/commonAside';
+import CommonHeader from '../components/commonHeader';
 
 const { Header, Sider, Content } = Layout;
 
@@ -20,7 +21,7 @@ const Main = () => {
     <Layout className='main-container'>
       <CommonAside/>
       <Layout>
-        <Header
+        {/* <Header
           style={{
             padding: 0,
             background: colorBgContainer,
@@ -34,7 +35,8 @@ const Main = () => {
               height: 64,
             }}
           />
-        </Header>
+        </Header> */}
+        <CommonHeader />
         <Content
           style={{
             margin: '24px 16px',
