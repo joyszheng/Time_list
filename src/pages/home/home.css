@@ -1,0 +1,89 @@
+.home img{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.home .user {
+  display: flex;
+  justify-content: space-around;      /* 主轴两边等距对齐 */
+  align-items: center;    /* 交叉轴中国对齐*/
+  padding-bottom: 20px;    /* 底部20px*/
+  border-bottom: 1px solid #ccc;    /* 下面的一个横杠*/
+
+}
+
+.home .name {
+  font-size: 32px;
+}
+
+.login-info {
+  padding-top: 20px;
+  text-align: left;
+  color: rgba(0, 120, 78, 0.78);
+}
+
+/* 复制的样式 */
+.home .num {
+  margin-left: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.home .num .el-card {
+  width: 32%;
+  margin-bottom: 20px;
+}
+.home .num .icon {
+  font-size: 30px;
+  width: 80px;
+  height: 80px;
+  text-align: center;
+  line-height: 80px;
+  color: #fff;
+}
+.home .num .detail {
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.home .num .detail .num {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.home .num .detail .txt {
+  font-size: 14px;
+  text-align: center;
+  color: #999999;
+}
+.home .graph {
+  margin-top: 20px;
+  display: flex;
+}
+.home .graph .el-card {
+  width: 48%;
+}
+.home .userinfo .name {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+.home .anticon {
+  font-size: 30px;
+}
+.home .icon-box {
+  width: 80px;
+  height: 80px;
+  text-align: center;
+  line-height: 85px;
+  color: #fff;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.home .num .ant-card {
+  width: 33%;
+}
+.home .num .ant-card-body {
+  padding: 10px 25px;
+  display: flex;
+}

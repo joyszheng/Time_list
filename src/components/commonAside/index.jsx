@@ -28,10 +28,10 @@ const items = MenuConfig.map((icon) =>{
 
 
 
-const CommonAside = () =>{
+const CommonAside = ({collapsed}) =>{
   return(
-    <Sider trigger={null} collapsible >
-        <h3 className='app-name'>Timelist</h3>
+    <Sider trigger={null} collapsed={collapsed} >
+        <h3 className='app-name'>{ collapsed ? 'Time' : 'Timelist' }</h3>
         <Menu
           theme="dark"
           mode="inline"

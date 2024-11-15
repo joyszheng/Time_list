@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Outlet } from 'react-router-dom';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -9,17 +10,21 @@ import {
 import { Button, Layout, Menu, theme } from 'antd';
 import CommonAside from '../components/commonAside';
 import CommonHeader from '../components/commonHeader';
+import { useSelector } from 'react-redux';
 
 const { Header, Sider, Content } = Layout;
 
 const Main = () => {
-	const [collapsed, setCollapsed] = useState(false);
+	// const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+  // 获取收起展开的状态
+  const collapsed = useSelector(state => state.tab.isCollapse)
+
   return (
     <Layout className='main-container'>
-      <CommonAside/>
+      <CommonAside collapsed = {collapsed}/>
       <Layout>
         {/* <Header
           style={{
@@ -36,7 +41,7 @@ const Main = () => {
             }}
           />
         </Header> */}
-        <CommonHeader />
+        <CommonHeader collapsed = {collapsed}/>
         <Content
           style={{
             margin: '24px 16px',
@@ -46,7 +51,7 @@ const Main = () => {
             borderRadius: borderRadiusLG,
           }}
         >
-          Content
+          <Outlet></Outlet>
         </Content>
       </Layout>
     </Layout>
