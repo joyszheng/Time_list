@@ -8,7 +8,8 @@ module.exports = {
       "components": resolve("src/components"),
       "assets": resolve("src/assets"),
       "pages": resolve("src/pages"),
-      "api": resolve("src/api")
+      "api": resolve("src/api"),
+      "Yeecharts": resolve("src/components/Echarts")
     }
   }
 }

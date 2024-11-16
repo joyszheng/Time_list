@@ -3,6 +3,7 @@ import * as Icon from "@ant-design/icons";
 import React, { useEffect, useState } from 'react'
 import './home.css'
 import { getData } from "api"
+import MyEcharts from "Yeecharts"
 
 // table列的数据
 const columns = [
@@ -66,17 +67,58 @@ const countData = [
 const iconToElement = (name) => React.createElement(Icon[name])
 
 const Home = () => {
-	const userImg = require("assets/images/头像.jpg")
-	useEffect(() => {
-		getData().then(({data}) =>{
-			console.log(data,'res')
-			const {tableData} = data.data
-			setTableData(tableData)
-		})
-	},[])
+  const userImg = require("assets/images/头像.jpg")
+  const [tableData, setTableData] = useState([])
+  const [echartData, setEchartData] = useState({})
+  useEffect(() => {
+    getData().then(({ data }) => {
+      const { tableData, orderData, userData, videoData } = data.data
+      setTableData(tableData)
+      const order = orderData
+      const xData = order.date
+      const keyArray =  Object.keys(order.data[0])
+      const series = []
+      keyArray.forEach(key => {
+        series.push({
+          name: key,
+          data: order.data.map(item => item[key]),
+          type: 'line'
+        })
+      })
+      setEchartData({
+        ...echartData,
+        order: {
+          xData,
+          series
+        },
+        user: {
+          xData: userData.map(item => item.date),
+          series: [
+            {
+              name: '新增用户',
+              data: userData.map(item => item.new),
+              type: 'bar'
+            },
+            {
+                name: '活跃用户',
+                data: userData.map(item => item.active),
+                type: 'bar'
+            }
+          ]
+        },
+        video: {
+          series: [
+            {
+              data: videoData,
+              type: 'pie'
+            }
+          ]
+        }
+      })
+    })
+  }, [])
 
-	// 定义table数据
-	const [tableData, setTableData] = useState([])
+
 
 	return(
 		<Row className='home'>
@@ -115,6 +157,11 @@ const Home = () => {
               )
             })
           }
+        </div>
+        { echartData.order && <MyEcharts chartData={echartData.order} style={{ height: '280px' }} /> }
+        <div className="graph">
+          { echartData.user && <MyEcharts chartData={echartData.user} style={{ width: '50%', height: '240px' }} /> }
+          { echartData.video && <MyEcharts chartData={echartData.video} isAxisChart={false} style={{ width: '50%', height: '260px' }} /> }
         </div>
 			</Col>
 		</Row>
