@@ -112,7 +112,7 @@ const Home = () => {
               data: videoData,
               type: 'pie'
             }
-          ]
+          ] 
         }
       })
     })
